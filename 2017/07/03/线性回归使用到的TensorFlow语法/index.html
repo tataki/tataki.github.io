@@ -540,7 +540,7 @@ train = optimizer.minimize(cost)
 
 with tf.Session() as sess:
     #--------初始化所有变量值--------
-    init = tf.global_variable_initalizer()
+    init = tf.global_variables_initalizer()
     sess.run(init)
     #初始化w.b的值
     print(&quot;cost=&quot;,sess.run(cost),&quot;w=&quot;,sess.run(w),&quot;b=&quot;,sess.run(b))
