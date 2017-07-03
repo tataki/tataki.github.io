@@ -13,6 +13,18 @@
 <p><img src="https://ggg.9170.gs/hexo/img/jjsjwljg.png" alt="&quot;jjsjwl&quot;"><br><img src="https://ggg.9170.gs/jj-jjc.png" alt="&quot;jjc&quot;"><br><img src="https://ggg.9170.gs/hexo/img/jj-jhhs.png" alt="&quot;jhhs&quot;"><br><img src="https://ggg.9170.gs/jj-ch.png" alt="&quot;ch&quot;"><br><img src="https://ggg.9170.gs/hexo/img/jj-clj.png" alt="&quot;clj&quot;"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> TensorFlow </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> TensorFlow </tag>
+            
+        </tags>
         
     </entry>
     
@@ -73,6 +85,12 @@ with tf.Session() as sess:
     print &quot;正确率&quot;,accuracy.eval({x: mnist.test.images,y: mnist.test.labels})
 </code></pre>]]></content>
       
+        <categories>
+            
+            <category> TensorFlow </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -120,6 +138,12 @@ with tf.Session() as sess:
     print(sess.run(y, feed_dict={x: rand_array}))
 </code></pre>]]></content>
       
+        <categories>
+            
+            <category> TensorFlow </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -208,6 +232,18 @@ with tf.Session() as sess:
     #构造图形结构
 </code></pre>]]></content>
       
+        <categories>
+            
+            <category> TensorFlow </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> TensorFlow </tag>
+            
+        </tags>
         
     </entry>
     
@@ -242,6 +278,12 @@ h(x) = 2.0 * x + 1;
 <p>6.根据验证数据验证函数是否符合要求</p>
 ]]></content>
       
+        <categories>
+            
+            <category> TensorFlow </category>
+            
+        </categories>
+        
         
         <tags>
             
