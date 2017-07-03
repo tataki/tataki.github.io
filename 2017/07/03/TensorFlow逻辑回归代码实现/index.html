@@ -480,59 +480,8 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>##TensorFlow逻辑回归代码实现</p>
-<pre><code># -*- coding: UTF-8 -*-
-import tensorflow as tf
-#导入数据集
-from tensorflow.examples.tutorials.mnist import input_data
-mnist = input_data.read_data_sets(&quot;data/&quot;, one_hot=True)
+        <p>##TensorFlow逻辑回归代码实现<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"># -*- codin<span class="variable">g:</span> UTF-<span class="number">8</span> -*-</div><div class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line">#导入数据集</div><div class="line">from tensorflow.examples.tutorials.mnist import input_data</div><div class="line">mnist = input_data.read_data_sets(<span class="string">"data/"</span>, one_hot=True)</div><div class="line"></div><div class="line">#变量</div><div class="line">batch_size = <span class="number">100</span></div><div class="line"></div><div class="line">#训练的<span class="keyword">x</span>(image),<span class="keyword">y</span>(label)</div><div class="line"># <span class="keyword">x</span> = <span class="keyword">tf</span>.Variable() 不使用于大量数据</div><div class="line"># <span class="keyword">y</span> = <span class="keyword">tf</span>.Variable() 不使用于大量数据</div><div class="line"><span class="keyword">x</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.float32, [None, <span class="number">784</span>])</div><div class="line"><span class="keyword">y</span> = <span class="keyword">tf</span>.placeholder(<span class="keyword">tf</span>.float32, [None, <span class="number">10</span>])</div><div class="line"></div><div class="line">#模型权重</div><div class="line">#[<span class="number">55000</span>, <span class="number">784</span>]* <span class="keyword">w</span> = [<span class="number">55000</span>, <span class="number">10</span>]</div><div class="line"><span class="keyword">w</span> = <span class="keyword">tf</span>.Variable(<span class="keyword">tf</span>.zeros([<span class="number">784</span>, <span class="number">10</span>]))</div><div class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.Variable(<span class="keyword">tf</span>.zeros([<span class="number">10</span>]))</div><div class="line"></div><div class="line">#用softmax构建逻辑回归模型</div><div class="line">pred = <span class="keyword">tf</span>.<span class="keyword">nn</span>.softmax(<span class="keyword">tf</span>.matmul(<span class="keyword">x</span>,<span class="keyword">w</span>) + <span class="keyword">b</span>)</div><div class="line">#损失函数（交叉熵）</div><div class="line">cost = <span class="keyword">tf</span>.reduce_mean(-<span class="keyword">tf</span>.reduce_sum(<span class="keyword">y</span>*<span class="keyword">tf</span>.<span class="built_in">log</span>(pred),<span class="number">1</span>))</div><div class="line"># 梯度下降</div><div class="line">optimizer = <span class="keyword">tf</span>.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cost)</div><div class="line"></div><div class="line">#初始变量</div><div class="line">init = <span class="keyword">tf</span>.initialize_all_variables()</div><div class="line">#加载session图</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">    sess.run(init)</div><div class="line"></div><div class="line">    #开始训练</div><div class="line">    <span class="keyword">for</span> epoch in <span class="built_in">range</span>(<span class="number">50</span>):</div><div class="line">        avg_cost = <span class="number">0</span></div><div class="line"></div><div class="line">        total_batch= <span class="keyword">int</span>(mnist.train.num_examples/batch_size)</div><div class="line">        <span class="keyword">for</span> i in <span class="built_in">range</span>(total_batch):</div><div class="line">            batch_xs, batch_ys = mnist.train.next_batch(batch_size)</div><div class="line">            sess.run(optimizer,&#123;<span class="keyword">x</span>: batch_xs,<span class="keyword">y</span>: batch_ys&#125;)</div><div class="line">            #计算平均损失</div><div class="line">            avg_cost += sess.run(cost,&#123;<span class="keyword">x</span>:batch_xs,<span class="keyword">y</span>:batch_ys&#125;) / total_batch</div><div class="line">        <span class="keyword">if</span> (epoch+<span class="number">1</span>) % <span class="number">5</span> == <span class="number">0</span>:</div><div class="line">            <span class="keyword">print</span> <span class="string">"avg_cost"</span>,avg_cost</div><div class="line">    <span class="keyword">print</span> <span class="string">"运行完成"</span></div><div class="line"></div><div class="line">    #测试准确率</div><div class="line">    correct = <span class="keyword">tf</span>.equal(<span class="keyword">tf</span>.argmax(pred, <span class="number">1</span>),<span class="keyword">tf</span>.argmax(<span class="keyword">y</span>, <span class="number">1</span>))</div><div class="line">    accuracy = <span class="keyword">tf</span>.reduce_mean(<span class="keyword">tf</span>.cast(correct, <span class="keyword">tf</span>.float32))</div><div class="line">    <span class="keyword">print</span> <span class="string">"正确率"</span>,accuracy.<span class="built_in">eval</span>(&#123;<span class="keyword">x</span>: mnist.test.images,<span class="keyword">y</span>: mnist.test.labels&#125;)</div></pre></td></tr></table></figure></p>
 
-#变量
-batch_size = 100
-
-#训练的x(image),y(label)
-# x = tf.Variable() 不使用于大量数据
-# y = tf.Variable() 不使用于大量数据
-x = tf.placeholder(tf.float32, [None, 784])
-y = tf.placeholder(tf.float32, [None, 10])
-
-#模型权重
-#[55000, 784]* w = [55000, 10]
-w = tf.Variable(tf.zeros([784, 10]))
-b = tf.Variable(tf.zeros([10]))
-
-#用softmax构建逻辑回归模型
-pred = tf.nn.softmax(tf.matmul(x,w) + b)
-#损失函数（交叉熵）
-cost = tf.reduce_mean(-tf.reduce_sum(y*tf.log(pred),1))
-# 梯度下降
-optimizer = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
-
-#初始变量
-init = tf.initialize_all_variables()
-#加载session图
-with tf.Session() as sess:
-    sess.run(init)
-
-    #开始训练
-    for epoch in range(50):
-        avg_cost = 0
-
-        total_batch= int(mnist.train.num_examples/batch_size)
-        for i in range(total_batch):
-            batch_xs, batch_ys = mnist.train.next_batch(batch_size)
-            sess.run(optimizer,{x: batch_xs,y: batch_ys})
-            #计算平均损失
-            avg_cost += sess.run(cost,{x:batch_xs,y:batch_ys}) / total_batch
-        if (epoch+1) % 5 == 0:
-            print &quot;avg_cost&quot;,avg_cost
-    print &quot;运行完成&quot;
-
-    #测试准确率
-    correct = tf.equal(tf.argmax(pred, 1),tf.argmax(y, 1))
-    accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
-    print &quot;正确率&quot;,accuracy.eval({x: mnist.test.images,y: mnist.test.labels})
-</code></pre>
     
 
     

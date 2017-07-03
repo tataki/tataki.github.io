@@ -480,81 +480,9 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>##基础语法部分</p>
-<pre><code>import tensorflow as tf
+        <p>##基础语法部分<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">import tensorflow as tf</div><div class="line"></div><div class="line"><span class="comment">#-----------准备阶段-----------</span></div><div class="line">a = tf.Variable([[2,3]])</div><div class="line">b = tf.Variable([[4],[2]])</div><div class="line">c = tf.matmul(a,b)</div><div class="line"></div><div class="line">print('c-------&gt;',c)</div><div class="line"></div><div class="line"><span class="comment">#创建用0填充的矩阵</span></div><div class="line">d = tf.zeros([2,4])</div><div class="line"><span class="comment">#平方</span></div><div class="line">e = tf.square([2])</div><div class="line"><span class="comment">#平均值</span></div><div class="line">f = tf.reduce_mean([1,3])</div><div class="line"><span class="comment">#均匀分布的随机数</span></div><div class="line">q = tf.random_uniform([1,10])</div><div class="line"><span class="comment">#------------执行阶段-----------</span></div><div class="line">with tf.Session() as sess:</div><div class="line">true<span class="comment">#初始所有的变量</span></div><div class="line">trueinit = tf.global_variables_initializer()</div><div class="line">truesess.run(init)</div></pre></td></tr></table></figure></p>
+<p>##代码实现部分<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"><span class="comment"># 一元的线性回归模型的训练</span></div><div class="line"><span class="comment"># 1.通过训练数据推测出线性回归函数（y = w * x + b）中的w 和 b的值</span></div><div class="line"><span class="comment"># 2.通过验证数据，验证得到的函数是否符合预期</span></div><div class="line"></div><div class="line"><span class="comment">#引入tensorflow</span></div><div class="line">import tensorflow as tf</div><div class="line"><span class="comment">#引入绘图标</span></div><div class="line"></div><div class="line"><span class="comment">#引入数据模块</span></div><div class="line">import testData as td</div><div class="line"></div><div class="line"><span class="comment"># 1.获得训练数据</span></div><div class="line"><span class="comment"># testData</span></div><div class="line"><span class="comment"># get_train_data 获得训练数据，参数data_length(获得数据的个数)返回：二维数组[0]代表x [1]代表y</span></div><div class="line"><span class="comment"># get_validata_data 获得验证数据 参数：data_length(数据个数) 返回二维数组 二维数组[0]代表x [1]代表y</span></div><div class="line"></div><div class="line">trainData = td.get_train_data(200)</div><div class="line">trainx = [v[0] <span class="keyword">for</span> v <span class="keyword">in</span> trainData]</div><div class="line">trainy = [v[1] <span class="keyword">for</span> v <span class="keyword">in</span> trainData]</div><div class="line"></div><div class="line"><span class="comment">#2.构造预测的线性回归函数 y = w * x +b</span></div><div class="line">w = tf.Variable(tf.random_uniform([1]))</div><div class="line">b = tf.Variable(tf.zeros([1]))</div><div class="line">y = w * trainx + b</div><div class="line"></div><div class="line"><span class="comment">#3.判断假设函数的好坏</span></div><div class="line"><span class="comment"># 代价函数</span></div><div class="line"></div><div class="line">cost = tf.reduce_mean(tf.square(y-trainy))</div><div class="line"></div><div class="line"><span class="comment">#4.调整假设函数</span></div><div class="line"><span class="comment">#梯度下降算法找最优解</span></div><div class="line">optimizer = tf.train.GradientDescentOptimizer(0.08)</div><div class="line">train = optimizer.minimize(cost)</div><div class="line"></div><div class="line">with tf.Session() as sess:</div><div class="line">    #--------初始化所有变量值--------</div><div class="line">    init = tf.initialize_all_variables() #replaced initialize_all_variables with global_variables_initializer</div><div class="line">    sess.<span class="builtin-name">run</span>(init)</div><div class="line">    #初始化w.b的值</div><div class="line">    <span class="builtin-name">print</span>(<span class="string">"cost="</span>,sess.<span class="builtin-name">run</span>(cost),<span class="string">"w="</span>,sess.<span class="builtin-name">run</span>(w),<span class="string">"b="</span>,sess.<span class="builtin-name">run</span>(b))</div><div class="line">    #循环运行</div><div class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(1000):</div><div class="line">        sess.<span class="builtin-name">run</span>(train)</div><div class="line">        #输出训练好的w和b</div><div class="line">        <span class="builtin-name">print</span>(<span class="string">"cost="</span>,sess.<span class="builtin-name">run</span>(cost),<span class="string">"w="</span>,sess.<span class="builtin-name">run</span>(w),<span class="string">"b="</span>,sess.<span class="builtin-name">run</span>(b))</div><div class="line">    <span class="builtin-name">print</span>(<span class="string">"执行完成"</span>)</div><div class="line"></div><div class="line">    #构造图形结构</div></pre></td></tr></table></figure></p>
 
-#-----------准备阶段-----------
-a = tf.Variable([[2,3]])
-b = tf.Variable([[4],[2]])
-c = tf.matmul(a,b)
-
-print(&#39;c-------&gt;&#39;,c)
-
-#创建用0填充的矩阵
-d = tf.zeros([2,4])
-#平方
-e = tf.square([2])
-#平均值
-f = tf.reduce_mean([1,3])
-#均匀分布的随机数
-q = tf.random_uniform([1,10])
-#------------执行阶段-----------
-with tf.Session() as sess:
-    #初始所有的变量
-    init = tf.global_variables_initializer()
-    sess.run(init)
-</code></pre><p>##代码实现部分</p>
-<pre><code># -*- coding: UTF-8 -*-
-# 一元的线性回归模型的训练
-# 1.通过训练数据推测出线性回归函数（y = w * x + b）中的w 和 b的值
-# 2.通过验证数据，验证得到的函数是否符合预期
-
-#引入tensorflow
-import tensorflow as tf
-#引入绘图标
-
-#引入数据模块
-import testData as td
-
-# 1.获得训练数据
-# testData
-# get_train_data 获得训练数据，参数data_length(获得数据的个数)返回：二维数组[0]代表x [1]代表y
-# get_validata_data 获得验证数据 参数：data_length(数据个数) 返回二维数组 二维数组[0]代表x [1]代表y
-
-trainData = td.get_train_data(200)
-trainx = [v[0] for v in trainData]
-trainy = [v[1] for v in trainData]
-
-#2.构造预测的线性回归函数 y = w * x +b
-w = tf.Variable(tf.random_uniform([1]))
-b = tf.Variable(tf.zeros([1]))
-y = w * trainx + b
-
-#3.判断假设函数的好坏
-# 代价函数
-
-cost = tf.reduce_mean(tf.square(y-trainy))
-
-#4.调整假设函数
-#梯度下降算法找最优解
-optimizer = tf.train.GradientDescentOptimizer(0.08)
-train = optimizer.minimize(cost)
-
-with tf.Session() as sess:
-    #--------初始化所有变量值--------
-    init = tf.initialize_all_variables() #replaced initialize_all_variables with global_variables_initializer
-    sess.run(init)
-    #初始化w.b的值
-    print(&quot;cost=&quot;,sess.run(cost),&quot;w=&quot;,sess.run(w),&quot;b=&quot;,sess.run(b))
-    #循环运行
-    for k in range(1000):
-        sess.run(train)
-        #输出训练好的w和b
-        print(&quot;cost=&quot;,sess.run(cost),&quot;w=&quot;,sess.run(w),&quot;b=&quot;,sess.run(b))
-    print(&quot;执行完成&quot;)
-
-    #构造图形结构
-</code></pre>
     
 
     
