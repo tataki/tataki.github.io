@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[TensorFlow逻辑回归代码实现]]></title>
+      <url>/2017/07/03/TensorFlow%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</url>
+      <content type="html"></content>
+      
+        
+        <tags>
+            
+            <tag> TensorFlow </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[TensorFlow逻辑回归语法]]></title>
       <url>/2017/07/03/TensorFlow%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<p><img src="https://ggg.9170.gs/hexo/img/softmax.png" alt="&quot;softmax&quot;"></p>
