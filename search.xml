@@ -85,8 +85,8 @@ with tf.Session() as sess:
     </entry>
     
     <entry>
-      <title><![CDATA[TensorFlow 第一天]]></title>
-      <url>/2017/07/03/TensorFlow-%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
+      <title><![CDATA[TensorFlow 一元线性回归]]></title>
+      <url>/2017/07/03/TensorFlow%20%E4%B8%80%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</url>
       <content type="html"><![CDATA[<h2 id="TensorFlow实现一元线性回归模型"><a href="#TensorFlow实现一元线性回归模型" class="headerlink" title="TensorFlow实现一元线性回归模型"></a>TensorFlow实现一元线性回归模型</h2><p>(x y)<br><br>&nbsp;1 3<br><br>&nbsp;1 5.1<br><br>&nbsp;1 6.99<br></p>
 <blockquote>
 <p>y = w * x + b;</p>
