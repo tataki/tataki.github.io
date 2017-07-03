@@ -491,8 +491,13 @@
 <p>3 * 1 + 5 = 8</p>
 </blockquote>
 <p>代价函数：均方差<br>（（8 - 3）的平方 + (11 - 5.1)的平方+(14 - 6.99)的平方）/ 2*3</p>
-<h3 id="3-判断这个模型参数"><a href="#3-判断这个模型参数" class="headerlink" title="3.判断这个模型参数"></a>3.判断这个模型参数</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">h(<span class="keyword">x</span>) = <span class="number">2.8</span> * <span class="keyword">x</span> + <span class="number">4</span><span class="comment">;</span></div><div class="line">h(<span class="keyword">x</span>) = <span class="number">2.6</span> * <span class="keyword">x</span> +<span class="number">3</span><span class="comment">;</span></div><div class="line">.</div><div class="line">.</div><div class="line">.</div><div class="line">h(<span class="keyword">x</span>) = <span class="number">2.0</span> * <span class="keyword">x</span> + <span class="number">1</span><span class="comment">;</span></div></pre></td></tr></table></figure>
-<p>求最优解算法：</p>
+<h3 id="3-判断这个模型参数"><a href="#3-判断这个模型参数" class="headerlink" title="3.判断这个模型参数"></a>3.判断这个模型参数</h3><pre><code>h(x) = 2.8 * x + 4;
+h(x) = 2.6 * x +3;
+.
+.
+.
+h(x) = 2.0 * x + 1;
+</code></pre><p>求最优解算法：</p>
 <p>梯度下降：</p>
 <h3 id="4-得到符合要求的线性回归模型"><a href="#4-得到符合要求的线性回归模型" class="headerlink" title="4.得到符合要求的线性回归模型"></a>4.得到符合要求的线性回归模型</h3><p>h(x) = 2.0 * x + 1;</p>
 <h3 id="5-用验证数据验证下训练出来的模型对不对"><a href="#5-用验证数据验证下训练出来的模型对不对" class="headerlink" title="5.用验证数据验证下训练出来的模型对不对"></a>5.用验证数据验证下训练出来的模型对不对</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.获得训练数据和验证数据（一堆（x，y）组成的训练点）</p>
