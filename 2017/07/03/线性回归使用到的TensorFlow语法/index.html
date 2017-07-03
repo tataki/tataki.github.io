@@ -503,14 +503,15 @@ with tf.Session() as sess:
     init = tf.global_variables_initializer()
     sess.run(init)
 </code></pre><p>##代码实现部分</p>
-<pre><code># 一元的线性回归模型的训练
+<pre><code># -*- coding: UTF-8 -*-
+# 一元的线性回归模型的训练
 # 1.通过训练数据推测出线性回归函数（y = w * x + b）中的w 和 b的值
 # 2.通过验证数据，验证得到的函数是否符合预期
 
 #引入tensorflow
 import tensorflow as tf
 #引入绘图标
-import matplotlib.pyplot as plt
+
 #引入数据模块
 import testData as td
 
@@ -519,7 +520,7 @@ import testData as td
 # get_train_data 获得训练数据，参数data_length(获得数据的个数)返回：二维数组[0]代表x [1]代表y
 # get_validata_data 获得验证数据 参数：data_length(数据个数) 返回二维数组 二维数组[0]代表x [1]代表y
 
-tarinData = td.get_train_data(200)
+trainData = td.get_train_data(200)
 trainx = [v[0] for v in trainData]
 trainy = [v[1] for v in trainData]
 
@@ -540,41 +541,18 @@ train = optimizer.minimize(cost)
 
 with tf.Session() as sess:
     #--------初始化所有变量值--------
-    init = tf.global_variables_initalizer()
+    init = tf.initialize_all_variables() #replaced initialize_all_variables with global_variables_initializer
     sess.run(init)
     #初始化w.b的值
     print(&quot;cost=&quot;,sess.run(cost),&quot;w=&quot;,sess.run(w),&quot;b=&quot;,sess.run(b))
     #循环运行
-    for k in range(500):
+    for k in range(1000):
         sess.run(train)
         #输出训练好的w和b
-        print(&quot;cost=&quot;,sess,.un(cost),&quot;w=&quot;,sess.run(w),&quot;b=&quot;,sess.run(b))
+        print(&quot;cost=&quot;,sess.run(cost),&quot;w=&quot;,sess.run(w),&quot;b=&quot;,sess.run(b))
     print(&quot;执行完成&quot;)
 
     #构造图形结构
-    plt.plot(trainx, trainy, &#39;ro&#39;, label=&#39;train data&#39;)
-    plt.plot(trainx, sess.run(y), label=&#39;train result&#39;)
-    plt.legend()
-    plt.show()
-</code></pre><p>##训练数据验证</p>
-<pre><code>import matplotlib.pyplot as plt
-#引入测试数据
-import testData as pt
-
-variableData = pt.get_variadata_data(40)
-va_x = [v[0] for v in variableData]
-va_y = [v[1] for v in variableData]
-
-#训练结果
-y = []
-for x in va_x:
-    y.append(x * 0.3 + 0.8)
-
-#构造图形结构
-plt.plot(va_x, va_y, &#39;ro&#39;, label = &#39;validata Data&#39;)
-plt.plot(va_x, y, label = &#39;train result&#39;)
-plt.legend()
-plt.show()
 </code></pre>
     
 
