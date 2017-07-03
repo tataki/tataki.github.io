@@ -20,7 +20,7 @@
       <title><![CDATA[TensorFlow逻辑回归语法]]></title>
       <url>/2017/07/03/TensorFlow%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<p><img src="https://ggg.9170.gs/hexo/img/softmax.png" alt="&quot;softmax&quot;"></p>
-<pre><code>import tensorflow as tf
+<h3 id="语法部分"><a href="#语法部分" class="headerlink" title="语法部分"></a>语法部分</h3><pre><code>import tensorflow as tf
 import numpy as np
 
 #占位符，适用于不知道具体参数
