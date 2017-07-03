@@ -504,57 +504,58 @@ q <span class="token operator">=</span> tf<span class="token punctuation">.</spa
     sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>init<span class="token punctuation">)</span>
 </code></pre>
 <p>##代码实现部分</p>
-<pre><code># -*- coding: UTF-8 -*-
-# 一元的线性回归模型的训练
-# 1.通过训练数据推测出线性回归函数（y = w * x + b）中的w 和 b的值
-# 2.通过验证数据，验证得到的函数是否符合预期
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: UTF-8 -*-</span>
+<span class="token comment" spellcheck="true"># 一元的线性回归模型的训练</span>
+<span class="token comment" spellcheck="true"># 1.通过训练数据推测出线性回归函数（y = w * x + b）中的w 和 b的值</span>
+<span class="token comment" spellcheck="true"># 2.通过验证数据，验证得到的函数是否符合预期</span>
 
-#引入tensorflow
-import tensorflow as tf
-#引入绘图标
+<span class="token comment" spellcheck="true">#引入tensorflow</span>
+<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token comment" spellcheck="true">#引入绘图标</span>
 
-#引入数据模块
-import testData as td
+<span class="token comment" spellcheck="true">#引入数据模块</span>
+<span class="token keyword">import</span> testData <span class="token keyword">as</span> td
 
-# 1.获得训练数据
-# testData
-# get_train_data 获得训练数据，参数data_length(获得数据的个数)返回：二维数组[0]代表x [1]代表y
-# get_validata_data 获得验证数据 参数：data_length(数据个数) 返回二维数组 二维数组[0]代表x [1]代表y
+<span class="token comment" spellcheck="true"># 1.获得训练数据</span>
+<span class="token comment" spellcheck="true"># testData</span>
+<span class="token comment" spellcheck="true"># get_train_data 获得训练数据，参数data_length(获得数据的个数)返回：二维数组[0]代表x [1]代表y</span>
+<span class="token comment" spellcheck="true"># get_validata_data 获得验证数据 参数：data_length(数据个数) 返回二维数组 二维数组[0]代表x [1]代表y</span>
 
-trainData = td.get_train_data(200)
-trainx = [v[0] for v in trainData]
-trainy = [v[1] for v in trainData]
+trainData <span class="token operator">=</span> td<span class="token punctuation">.</span>get_train_data<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>
+trainx <span class="token operator">=</span> <span class="token punctuation">[</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token keyword">for</span> v <span class="token keyword">in</span> trainData<span class="token punctuation">]</span>
+trainy <span class="token operator">=</span> <span class="token punctuation">[</span>v<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">for</span> v <span class="token keyword">in</span> trainData<span class="token punctuation">]</span>
 
-#2.构造预测的线性回归函数 y = w * x +b
-w = tf.Variable(tf.random_uniform([1]))
-b = tf.Variable(tf.zeros([1]))
-y = w * trainx + b
+<span class="token comment" spellcheck="true">#2.构造预测的线性回归函数 y = w * x +b</span>
+w <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>random_uniform<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> w <span class="token operator">*</span> trainx <span class="token operator">+</span> b
 
-#3.判断假设函数的好坏
-# 代价函数
+<span class="token comment" spellcheck="true">#3.判断假设函数的好坏</span>
+<span class="token comment" spellcheck="true"># 代价函数</span>
 
-cost = tf.reduce_mean(tf.square(y-trainy))
+cost <span class="token operator">=</span> tf<span class="token punctuation">.</span>reduce_mean<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>square<span class="token punctuation">(</span>y<span class="token operator">-</span>trainy<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-#4.调整假设函数
-#梯度下降算法找最优解
-optimizer = tf.train.GradientDescentOptimizer(0.08)
-train = optimizer.minimize(cost)
+<span class="token comment" spellcheck="true">#4.调整假设函数</span>
+<span class="token comment" spellcheck="true">#梯度下降算法找最优解</span>
+optimizer <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>GradientDescentOptimizer<span class="token punctuation">(</span><span class="token number">0.08</span><span class="token punctuation">)</span>
+train <span class="token operator">=</span> optimizer<span class="token punctuation">.</span>minimize<span class="token punctuation">(</span>cost<span class="token punctuation">)</span>
 
-with tf.Session() as sess:
-    #--------初始化所有变量值--------
-    init = tf.initialize_all_variables() #replaced initialize_all_variables with global_variables_initializer
-    sess.run(init)
-    #初始化w.b的值
-    print(&quot;cost=&quot;,sess.run(cost),&quot;w=&quot;,sess.run(w),&quot;b=&quot;,sess.run(b))
-    #循环运行
-    for k in range(1000):
-        sess.run(train)
-        #输出训练好的w和b
-        print(&quot;cost=&quot;,sess.run(cost),&quot;w=&quot;,sess.run(w),&quot;b=&quot;,sess.run(b))
-    print(&quot;执行完成&quot;)
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true">#--------初始化所有变量值--------</span>
+    init <span class="token operator">=</span> tf<span class="token punctuation">.</span>initialize_all_variables<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#replaced initialize_all_variables with global_variables_initializer</span>
+    sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>init<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#初始化w.b的值</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"cost="</span><span class="token punctuation">,</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>cost<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"w="</span><span class="token punctuation">,</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"b="</span><span class="token punctuation">,</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#循环运行</span>
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>train<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">#输出训练好的w和b</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"cost="</span><span class="token punctuation">,</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>cost<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"w="</span><span class="token punctuation">,</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"b="</span><span class="token punctuation">,</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"执行完成"</span><span class="token punctuation">)</span>
 
-    #构造图形结构
+    <span class="token comment" spellcheck="true">#构造图形结构</span>
 </code></pre>
+
     
 
     
