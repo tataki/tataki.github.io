@@ -283,7 +283,8 @@
 
     <!-- Custom Head -->
     
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
     
@@ -480,7 +481,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>##基础语法部分</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
 
 <span class="token comment" spellcheck="true">#-----------准备阶段-----------</span>
 a <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -502,7 +503,7 @@ q <span class="token operator">=</span> tf<span class="token punctuation">.</spa
     <span class="token comment" spellcheck="true">#初始所有的变量</span>
     init <span class="token operator">=</span> tf<span class="token punctuation">.</span>global_variables_initializer<span class="token punctuation">(</span><span class="token punctuation">)</span>
     sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>init<span class="token punctuation">)</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>##代码实现部分</p>
 <pre><code># -*- coding: UTF-8 -*-
 # 一元的线性回归模型的训练
