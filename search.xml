@@ -3,6 +3,28 @@
   
     
     <entry>
+      <title><![CDATA[七牛的高级使用]]></title>
+      <url>/2017/07/05/%E4%B8%83%E7%89%9B%E7%9A%84%E9%AB%98%E7%BA%A7%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<p>mark下链接<a href="https://developer.qiniu.com/dora" target="_blank" rel="external">Link</a></p>
+<p>可对七牛缓冲资源进行高级操作，比如图片的缩放，裁剪和变形，还有对于文件，音频的高级处理等等</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 实用 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 七牛 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[mac下配合Mweb优雅地使用Hexo]]></title>
       <url>/2017/07/05/mac%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Hexo/</url>
       <content type="html"><![CDATA[<p>陪着好Hexo后最头痛的还是关于使用markdown书写博文，之前博主都是使用网页版七牛做图床，手动上传图片再配合MacDown编辑文章(也有人推荐mou，但在10.12.5下有兼容问题)，后在apple store中找到一款图床神器ipic，收费软件，顺藤摸瓜发现在v2上原作者开源了这软件的早期版本<a href="https://github.com/chenxtdo/UPImageMacApp" target="_blank" rel="external">UPImageMacApp</a>还是挺好用的，上传好图片后直接将markdown格式存入剪切板。但这次的主角是Mweb，一款markdown神器。</p>
@@ -31,7 +53,7 @@
       
         <categories>
             
-            <category> Mac </category>
+            <category> 实用 </category>
             
         </categories>
         
