@@ -3,10 +3,42 @@
   
     
     <entry>
-      <title><![CDATA[mac下如何优雅地使用Hexo]]></title>
+      <title><![CDATA[mac下配合Mweb优雅地使用Hexo]]></title>
       <url>/2017/07/05/mac%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E4%BD%BF%E7%94%A8Hexo/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>陪着好Hexo后最头痛的还是关于使用markdown书写博文，之前博主都是使用网页版七牛做图床，手动上传图片再配合MacDown编辑文章(也有人推荐mou，但在10.12.5下有兼容问题)，后在apple store中找到一款图床神器ipic，收费软件，顺藤摸瓜发现在v2上原作者开源了这软件的早期版本<a href="https://github.com/chenxtdo/UPImageMacApp" target="_blank" rel="external">UPImageMacApp</a>还是挺好用的，上传好图片后直接将markdown格式存入剪切板。但这次的主角是Mweb，一款markdown神器。</p>
+<p>##具体步骤</p>
+<ul>
+<li><p>使用term命令 hexo new “文章名” 生成编辑模板</p>
+</li>
+<li><p>Mweb中配置好七牛图床</p>
+</li>
+<li>打开Mweb，使用快捷键command+e切换到外边编辑模式</li>
+<li>将hexo的_post/目录添加到Mweb的FOLDERS中</li>
+</ul>
+<p>这样一来每次新new出的文章，都可在Mweb中直接编辑。<br><strong>重要</strong></p>
+<ul>
+<li><p>在编辑完成后，点击窗口右上方的<br><img src="https://ggg.9170.gs/2017-07-05-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-05%20%E4%B8%8B%E5%8D%888.28.12.png" alt="屏幕快照1">将本地图片上传至图床，这将会把编辑文档中的本地图片全上传到对应图床地址</p>
+</li>
+<li><p>Mweb可实现将本地图片拖拽到编辑文档对于位置，自动上传至图床功能（超好用）！ </p>
+</li>
+</ul>
+<blockquote>
+<p>使用七牛文件不可存在中文</p>
+</blockquote>
+]]></content>
       
+        <categories>
+            
+            <category> Mac </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
         
     </entry>
     

@@ -12,7 +12,7 @@
     
     <title>
         
-            mac下如何优雅地使用Hexo | 
+            mac下配合Mweb优雅地使用Hexo | 
         
         东亜重工
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#2196F3">
     <meta name="author" content="Tataki">
     <meta name="description" itemprop="description" content="TOA Heavy Industries">
-    <meta name="keywords" content="编程 音乐 steam osu">
+    <meta name="keywords" content="编程 音乐 steam osu,hexo">
 
     <!-- Site Verification -->
     
@@ -65,10 +65,10 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://tataki.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="mac下如何优雅地使用Hexo | 东亜重工">
+    <meta property="og:title" content="mac下配合Mweb优雅地使用Hexo | 东亜重工">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="TOA Heavy Industries">
-    
+    <meta property="og:article:tag" content="hexo"> 
 
     
         <meta property="article:published_time" content="7月 05, 2017" />
@@ -76,7 +76,7 @@
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="mac下如何优雅地使用Hexo | 东亜重工">
+    <meta name="twitter:title" content="mac下配合Mweb优雅地使用Hexo | 东亜重工">
     <meta name="twitter:description" content="TOA Heavy Industries">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -110,7 +110,7 @@
         },
         "description": "我一边踉跄前行，一边重振旗鼓。  ——太宰"
     },
-    "headline": "mac下如何优雅地使用Hexo",
+    "headline": "mac下配合Mweb优雅地使用Hexo",
     "url": "https://tataki.github.io/2017/07/05/mac下如何优雅地使用Hexo/index.html",
     "datePublished": "7月 05, 2017",
     "dateModified": "7月 05, 2017",
@@ -369,7 +369,7 @@
         
     
             <p class="article-headline-p">
-                mac下如何优雅地使用Hexo
+                mac下配合Mweb优雅地使用Hexo
             </p>
         </div>
 
@@ -412,7 +412,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/hexo/">hexo</a>
     </ul>
     
 
@@ -428,7 +428,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=mac下如何优雅地使用Hexo&url=https://tataki.github.io/2017/07/05/mac下如何优雅地使用Hexo/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=mac下配合Mweb优雅地使用Hexo&url=https://tataki.github.io/2017/07/05/mac下如何优雅地使用Hexo/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -437,7 +437,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=mac下如何优雅地使用Hexo&url=https://tataki.github.io/2017/07/05/mac下如何优雅地使用Hexo/index.html&via=Tataki" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=mac下配合Mweb优雅地使用Hexo&url=https://tataki.github.io/2017/07/05/mac下如何优雅地使用Hexo/index.html&via=Tataki" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -461,7 +461,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=东亜重工&title=mac下如何优雅地使用Hexo&summary=TOA Heavy Industries&pics=https://tataki.github.io/img/favicon.png&url=https://tataki.github.io/2017/07/05/mac下如何优雅地使用Hexo/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=东亜重工&title=mac下配合Mweb优雅地使用Hexo&summary=TOA Heavy Industries&pics=https://tataki.github.io/img/favicon.png&url=https://tataki.github.io/2017/07/05/mac下如何优雅地使用Hexo/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -479,7 +479,27 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <p>陪着好Hexo后最头痛的还是关于使用markdown书写博文，之前博主都是使用网页版七牛做图床，手动上传图片再配合MacDown编辑文章(也有人推荐mou，但在10.12.5下有兼容问题)，后在apple store中找到一款图床神器ipic，收费软件，顺藤摸瓜发现在v2上原作者开源了这软件的早期版本<a href="https://github.com/chenxtdo/UPImageMacApp" target="_blank" rel="external">UPImageMacApp</a>还是挺好用的，上传好图片后直接将markdown格式存入剪切板。但这次的主角是Mweb，一款markdown神器。</p>
+<p>##具体步骤</p>
+<ul>
+<li><p>使用term命令 hexo new “文章名” 生成编辑模板</p>
+</li>
+<li><p>Mweb中配置好七牛图床</p>
+</li>
+<li>打开Mweb，使用快捷键command+e切换到外边编辑模式</li>
+<li>将hexo的_post/目录添加到Mweb的FOLDERS中</li>
+</ul>
+<p>这样一来每次新new出的文章，都可在Mweb中直接编辑。<br><strong>重要</strong></p>
+<ul>
+<li><p>在编辑完成后，点击窗口右上方的<br><img src="https://ggg.9170.gs/2017-07-05-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-07-05%20%E4%B8%8B%E5%8D%888.28.12.png" alt="屏幕快照1">将本地图片上传至图床，这将会把编辑文档中的本地图片全上传到对应图床地址</p>
+</li>
+<li><p>Mweb可实现将本地图片拖拽到编辑文档对于位置，自动上传至图床功能（超好用）！ </p>
+</li>
+</ul>
+<blockquote>
+<p>使用七牛文件不可存在中文</p>
+</blockquote>
+
     
 
     
@@ -681,7 +701,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/TensorFlow/">TensorFlow<span class="sidebar_archives-count">8</span></a>
+                <a class="sidebar_archives-link" href="/categories/Mac/">Mac<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/TensorFlow/">TensorFlow<span class="sidebar_archives-count">8</span></a>
             </ul>
         </li>
         
