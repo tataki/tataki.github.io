@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title><![CDATA[python 多线程]]></title>
+      <url>/2017/07/13/python-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<p>多任务可以由多进程完成，也可以由一个进程内的多线程完成。</p>
+<p>我们前面提到了进程是由若干线程组成的，一个进程至少有一个线程。</p>
+<p>由于线程是操作系统直接支持的执行单元，因此，高级语言通常都内置多线程的支持，Python也不例外，并且，Python的线程是真正的Posix Thread，而不是模拟出来的线程。</p>
+<p>Python的标准库提供了两个模块：_thread和threading，_thread是低级模块，threading是高级模块，对_thread进行了封装。绝大多数情况下，我们只需要使用threading这个高级模块。</p>
+<p>多线程<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time, threading</div><div class="line"></div><div class="line"><span class="comment"># 新线程执行的代码:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'thread %s is running...'</span> % threading.current_thread().name)</div><div class="line">    n = <span class="number">0</span></div><div class="line">    <span class="keyword">while</span> n &lt; <span class="number">5</span>:</div><div class="line">        n = n + <span class="number">1</span></div><div class="line">        print(<span class="string">'thread %s &gt;&gt;&gt; %s'</span> % (threading.current_thread().name, n))</div><div class="line">        time.sleep(<span class="number">1</span>)</div><div class="line">    print(<span class="string">'thread %s ended.'</span> % threading.current_thread().name)</div><div class="line"></div><div class="line">print(<span class="string">'thread %s is running...'</span> % threading.current_thread().name)</div><div class="line">t = threading.Thread(target=loop, name=<span class="string">'LoopThread'</span>)</div><div class="line">t.start()</div><div class="line">t.join()</div><div class="line">print(<span class="string">'thread %s ended.'</span> % threading.current_thread().name)</div></pre></td></tr></table></figure></p>
+<p>线程锁<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- conding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time, threading</div><div class="line"></div><div class="line"><span class="comment"># 假定银行存款</span></div><div class="line">balance = <span class="number">0</span></div><div class="line">lock = threading.lock()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_it</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="comment">#先存后取，合应该为0</span></div><div class="line">    <span class="keyword">global</span> blance</div><div class="line">    balance = blance + n</div><div class="line">    balance = balance - n</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_thread</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10000</span>):</div><div class="line">    <span class="comment">#获得取锁</span></div><div class="line">    lock.acquire()</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="comment">#放心改吧：</span></div><div class="line">        change_it(n)</div><div class="line">    finallu:</div><div class="line">        <span class="comment">#释放锁</span></div><div class="line">        lock.release()</div><div class="line">        </div><div class="line">t1 = threading.Thread(target=run_thread, args=(<span class="number">5</span>,))</div><div class="line">t2 = threading.Thread(target=run_thread, args=(<span class="number">8</span>,))</div><div class="line">t1.start()</div><div class="line">t2.start()</div><div class="line">t1.join()</div><div class="line">t2.join()</div><div class="line">print(balance)</div></pre></td></tr></table></figure></p>
+<p>使用线程锁后效果如同单线程工作，无法发挥单线程实力</p>
+]]></content>
+      
+        <categories>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[神经网络模型的保存和读取]]></title>
       <url>/2017/07/05/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E8%AF%BB%E5%8F%96/</url>
       <content type="html"><![CDATA[<p>简略过程保持</p>
