@@ -3,6 +3,37 @@
   
     
     <entry>
+      <title><![CDATA[python bt转磁力]]></title>
+      <url>/2017/07/18/python-bt%E8%BD%AC%E7%A3%81%E5%8A%9B/</url>
+      <content type="html"><![CDATA[<h2 id="Python将BT种子文件转换为磁力链的两种方法"><a href="#Python将BT种子文件转换为磁力链的两种方法" class="headerlink" title="Python将BT种子文件转换为磁力链的两种方法"></a>Python将BT种子文件转换为磁力链的两种方法</h2><p>BT种子文件相对磁力链来说存储不方便，而且在网站上存放BT文件容易引起版权纠纷，而磁力链相对来说则风险小一些。而且很多论坛或者网站限制了文件上传的类型，分享一个BT种子还需要改文件后缀或者压缩一次，其他人需要下载时候还要额外多一步下载种子的操作。</p>
+<p>所以将BT种子转换为占用空间更小，分享更方便的磁力链还是有挺大好处的。</p>
+<p>首先一个方案是使用bencode这个插件，通过pip方式安装或者自行下载源文件<a href="https://pypi.python.org/pypi/bencode/1.0通过python" target="_blank" rel="external">https://pypi.python.org/pypi/bencode/1.0通过python</a> setup.py install方式安装均可。</p>
+<p>相应的将BT种子转换为磁力链代码为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> bencode, hashlib, base64, urllib</div><div class="line">torrent = open(<span class="string">'ubuntu-12.04.2-server-amd64.iso.torrent'</span>, <span class="string">'rb'</span>).read()</div><div class="line"></div><div class="line">metadata = bencode.bdecode(torrent)</div><div class="line"></div><div class="line">hashcontents = bencode.bencode(metadata[<span class="string">'info'</span>])</div><div class="line"></div><div class="line">digest = hashlib.sha1(hashcontents).digest()</div><div class="line"></div><div class="line">b32hash = base64.b32encode(digest)</div><div class="line"></div><div class="line">params = &#123;<span class="string">'xt'</span>: <span class="string">'urn:btih:%s'</span> % b32hash,</div><div class="line"></div><div class="line">           <span class="string">'dn'</span>: metadata[<span class="string">'info'</span>][<span class="string">'name'</span>],</div><div class="line"></div><div class="line">           <span class="string">'tr'</span>: metadata[<span class="string">'announce'</span>],</div><div class="line"></div><div class="line">           <span class="string">'xl'</span>: metadata[<span class="string">'info'</span>][<span class="string">'length'</span>]&#125;</div><div class="line"></div><div class="line">paramstr = urllib.urlencode(params)</div><div class="line"></div><div class="line">magneturi = <span class="string">'magnet:?%s'</span> % paramstr</div><div class="line"></div><div class="line"><span class="keyword">print</span> magneturi</div></pre></td></tr></table></figure>
+<p>还有另外一个效率相对较高，而且更方便的方案是安装libtorrent，在Debian只需要</p>
+<blockquote>
+<p>apt-get install python-libtorrent即可</p>
+</blockquote>
+<p>对应转换磁力链的代码为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> libtorrent <span class="keyword">as</span> bt</div><div class="line">info = bt.torrent_info(<span class="string">'test.torrent'</span>)</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"magnet:?xt=urn:btih:%s&amp;dn=%s"</span> % (info.info_hash(), info.name())</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[e-hentai爬虫(基础)]]></title>
       <url>/2017/07/18/e-hentai%E7%88%AC%E8%99%AB/</url>
       <content type="html"><![CDATA[<p>使用了BeautifulSoup，re和urllib模块</p>
