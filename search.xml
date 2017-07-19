@@ -3,6 +3,28 @@
   
     
     <entry>
+      <title><![CDATA[pymysql 转义处理]]></title>
+      <url>/2017/07/19/pymysql-%E8%BD%AC%E4%B9%89%E5%A4%84%E7%90%86/</url>
+      <content type="html"><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>写爬虫时遇到了字符串中同时含有单双引号，在往数据库中写数据时出现语法错误</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>查阅文档后发现pymysql有个<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 代码实例</div><div class="line"></div><div class="line">```python</div><div class="line">db = pymysql(&quot;localhost&quot;,&quot;user&quot;,&quot;password&quot;,charset=&quot;utf8&quot;)</div><div class="line">cursor = db.cursor()</div><div class="line">exp = db.escape(str)</div><div class="line">sql = &quot;... where id = %s&quot; % exp #%s无需引号</div><div class="line">with db.cursor() as cursor:</div><div class="line">    try:</div><div class="line">        cursor.execute(sql)</div><div class="line">        db.commit()</div><div class="line">    except Exception as e:</div><div class="line">        print(e)</div><div class="line">        db.rollback()</div><div class="line">db.close()</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[python bt转磁力]]></title>
       <url>/2017/07/18/python-bt%E8%BD%AC%E7%A3%81%E5%8A%9B/</url>
       <content type="html"><![CDATA[<h2 id="Python将BT种子文件转换为磁力链的两种方法"><a href="#Python将BT种子文件转换为磁力链的两种方法" class="headerlink" title="Python将BT种子文件转换为磁力链的两种方法"></a>Python将BT种子文件转换为磁力链的两种方法</h2><p>BT种子文件相对磁力链来说存储不方便，而且在网站上存放BT文件容易引起版权纠纷，而磁力链相对来说则风险小一些。而且很多论坛或者网站限制了文件上传的类型，分享一个BT种子还需要改文件后缀或者压缩一次，其他人需要下载时候还要额外多一步下载种子的操作。</p>
