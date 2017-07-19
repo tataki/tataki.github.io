@@ -3,6 +3,32 @@
   
     
     <entry>
+      <title><![CDATA[解决data too long for column 'title' at row 1]]></title>
+      <url>/2017/07/19/%E8%A7%A3%E5%86%B3data-too-long-for-column-title-at-row-1/</url>
+      <content type="html"><![CDATA[<h1 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h1><p>写入数据库时报错</p>
+<blockquote>
+<p>data too long for column ‘title’ at row 1</p>
+</blockquote>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>百度，google下这问题回答真是五花八门。于是一行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alter table info modify column title varchar(<span class="number">255</span>)</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[pymysql 转义处理]]></title>
       <url>/2017/07/19/pymysql-%E8%BD%AC%E4%B9%89%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>写爬虫时遇到了字符串中同时含有单双引号，在往数据库中写数据时出现语法错误</p>
