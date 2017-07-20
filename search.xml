@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title><![CDATA[windows 下配置tensorflow GPU版]]></title>
+      <title><![CDATA[windows 下配置TensorFlow GPU版]]></title>
       <url>/2017/07/20/windows-%E4%B8%8B%E9%85%8D%E7%BD%AEtensorflow-GPU%E7%89%88/</url>
       <content type="html"><![CDATA[<h2 id="1-安装Anaconda"><a href="#1-安装Anaconda" class="headerlink" title="1.安装Anaconda"></a>1.安装Anaconda</h2><p><a href="https://www.continuum.io/downloads" target="_blank" rel="external">官网下载地址</a></p>
 <p><img src="http://i.imgur.com/qRZeZdC.jpg" alt=""></p>
@@ -23,14 +23,14 @@
       
         <categories>
             
-            <category> tensorflow </category>
+            <category> TensorFlow </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> tensorflow </tag>
+            <tag> TensorFlow </tag>
             
         </tags>
         
