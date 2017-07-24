@@ -505,7 +505,7 @@
 <p>确认为3.5版本</p>
 <p>使用命令安装GPU版本tensorflow</p>
 <blockquote>
-<p>pip install tensorflow-gpu<br># pip install –upgrade <a href="https://storage.googleapis.com/tensorflow/windows/gpu/tensorflow_gpu-0.12.1-cp35-cp35m-win_amd64.wh" target="_blank" rel="external">https://storage.googleapis.com/tensorflow/windows/gpu/tensorflow_gpu-0.12.1-cp35-cp35m-win_amd64.wh</a></p>
+<p>pip install tensorflow-gpu<br># pip install –upgrade <a href="https://storage.googleapis.com/tensorflow/windows/gpu/tensorflow_gpu-0.12.1-cp35-cp35m-win_amd64.whl" target="_blank" rel="external">https://storage.googleapis.com/tensorflow/windows/gpu/tensorflow_gpu-0.12.1-cp35-cp35m-win_amd64.whl</a></p>
 </blockquote>
 <h2 id="4-测试程序"><a href="#4-测试程序" class="headerlink" title="4.测试程序"></a>4.测试程序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line">hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</div><div class="line">sess = tf.Session()</div><div class="line">print(sess.run(hello))</div><div class="line">Hello, TensorFlow!</div><div class="line">a = tf.constant(<span class="number">10</span>)</div><div class="line">b = tf.constant(<span class="number">32</span>)</div><div class="line">print(sess.run(a + b))</div></pre></td></tr></table></figure>
 <p>到此安装完毕!</p>
